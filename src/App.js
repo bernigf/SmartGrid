@@ -19,7 +19,7 @@ function App() {
           <button id="gridSizeIncrementBtn">Grid Size +1</button>
           <br></br>
           <br></br>
-          <button id="gridGenBtn">Generate grid</button>
+          <button id="gridGenBtn">Generate random smart grid</button>
     </div>
   );
 }
