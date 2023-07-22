@@ -33,25 +33,43 @@ app.put('/api/users/:userId', (req, res) => {
 
     // Check user is authenticated using bearer token in the Authorization header
     const bearerToken = req.headers.authorization;
-    if(!authenticateUser(bearerToken, userId)) {
-        return res.status(401).json({ error: 'Authenticatino failed.' });
+    const bearerString = "Bearer "
+
+    token = bearerToken.replace(new RegExp('^' + bearerString), '');
+
+    if(!authenticateUser(token, userId)) {
+        return res.status(401).json({ error: 'Authentication failed.' });
     }
 
     // Create a folder for the user if it doesn't exist
     const userFolderPath = `./users/${userId}`;
     if(!fs.existsSync(userFolderPath)) {
-        fs.mkdirSync(userFolderPath, { recursive: True });
+        fs.mkdirSync(userFolderPath, { recursive: true });
     }
 
-    // Write JSON data to the user file
     const filePath = `${userFolderPath}/data.json`;
-    fs.writeFileSync(filePath, JSON_stringify(data));
 
-    res.json({ message: 'Data saved successfully.'});
+    let existingData = []
+    if(fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        existingData = JSON.parse(fileContent);
+    }
+
+    existingData.unshift(data);
+
+    // Write JSON data to the user file
+    fs.writeFileSync(filePath, JSON.stringify(existingData, null, 2));
+
+    const msg_str = `Data saved successfully to ${filePath}`;
+    res.json({ message: msg_str});
+    console.log(msg_str);
+    console.log();
 
 });
 
 function authenticateUser(token, userId) {
+
+    console.log(`Authenticating user='${userId}' token='${token}'`)
 
     return token == userId;
 
@@ -59,5 +77,6 @@ function authenticateUser(token, userId) {
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
+    console.log();
 });
 
