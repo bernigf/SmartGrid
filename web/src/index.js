@@ -12,18 +12,19 @@ ReactDOM.render(
   reactContentRoot
 );
 
-const sizeTxt = document.getElementById("gridSizeTxt")
-const incBtn = document.getElementById("gridSizeIncrementBtn")
-const genBtn = document.getElementById("gridGenBtn")
+//const sizeTxt = document.getElementById("gridSizeTxt")
+//const incBtn = document.getElementById("gridSizeIncrementBtn")
+//const genBtn = document.getElementById("gridGenBtn")
 
-let gridSize = parseInt(document.getElementById("gridSizeTxt").textContent)
-let gridSizeCount = gridSize
+//let gridSize = parseInt(document.getElementById("gridSizeTxt").textContent)
+//let gridSizeCount = gridSize
 
-incBtn.addEventListener("click", () => {
+/*incBtn.addEventListener("click", () => {
   gridSizeCount++
   sizeTxt.innerText = gridSizeCount
 })
 
 genBtn.addEventListener("click", () => {
   ReactDOM.render(<GenGrid />, reactContentRoot)  
-})
+})*/
+
