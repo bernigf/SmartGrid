@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Middleware to parse JSON in request body
 app.use(bodyParser.json());
@@ -10,19 +10,61 @@ app.use(bodyParser.json());
 // Sample in-memory database to store user data
 const usersData ={}
 
+function readExistingData(filePath) {
+
+    let existingData = []
+    if(fs.existsSync(filePath)) {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        existingData = JSON.parse(fileContent);
+    }
+
+    return existingData;
+
+}
+
 // GET response to user request
-app.get('/api/weather', (req, res) => {
+app.get('/api/data/:userId', (req, res) => {
 
-    const data = {
-        temperature: 25,
-        humidity: 60,
-        gpsCoordinates: {
-            latitude: 55.1234,
-            longitude: -125.5432
-        },
-    };
+    const { userId } = req.params;
+    const data = req.body;
 
-    res.json(data);
+    // Check user is authenticated using bearer token in the Authorization header
+    const bearerToken = req.headers.authorization;
+    const bearerString = "Bearer "
+
+    token = bearerToken.replace(new RegExp('^' + bearerString), '');
+
+    if(!authenticateUser(token, userId)) {
+        return res.status(401).json({ error: 'Authentication failed.' });
+    }
+
+    const userFolderPath = `./users/${userId}`;
+    const filePath = `${userFolderPath}/data.json`;
+
+    if(fs.existsSync(filePath)){
+
+        existingData = readExistingData(filePath);
+
+        maxItems = 3
+        responseData = []
+
+        counter = 0
+
+        if(existingData.length < maxItems) { maxItems = existingData.length; }
+
+        while(counter < maxItems){
+
+            responseData.push(existingData[counter]);
+            counter++;
+
+        }
+
+        res.json(responseData);
+    }
+
+    console.log(`Responded with ${maxItems} items to ${userId}`);
+    console.log()
+
 });
 
 // PUT request writes JSON data to user specific file
@@ -49,12 +91,7 @@ app.put('/api/users/:userId', (req, res) => {
 
     const filePath = `${userFolderPath}/data.json`;
 
-    let existingData = []
-    if(fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        existingData = JSON.parse(fileContent);
-    }
-
+    existingData = readExistingData(filePath);
     existingData.unshift(data);
 
     // Write JSON data to the user file

@@ -3,27 +3,29 @@ import React, { useState } from 'react';
 
 function App() {
 
-    const [inputText, setInputText] = useState('');
+    const [userText, setUserText] = useState('');
+    const [bearerText, setBearerText] = useState('');
+
     const [showTable, setShowTable] = useState(false);
 
-    const handleInputChange = (event) => { setInputText(event.target.value); };
+    const handleUserChange = (event) => { setUserText(event.target.value); };
+    const handleBearerChange = (event) => { setBearerText(event.target.value); };
+
     const handleShowTable = () => { setShowTable(true) };
 
     return (
         <div>
-        <input type="text" value={inputText} onChange={handleInputChange} />
+        API UserID: <input type="text" value={userText} onChange={handleUserChange} />
+        API Auth Bearer: <input type="text" value={bearerText} onChange={handleBearerChange} />
         <button onClick={handleShowTable}>Show Table</button>
 
         {showTable && (
-            <table border='1px'>
-            <tbody>
-            <tr>
-            <td>Input</td>
-            <td>{inputText}</td>
-            </tr>
-            </tbody>
-            </table>
+        <table border='1px'><tr>
+        <td>User:   {userText}</td>
+        <td>Bearer: {bearerText}</td>
+        </tr></table>
         )}
+
         </div>
     );
 

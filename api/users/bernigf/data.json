@@ -1,5 +1,61 @@
 [
   {
+    "temperature": 27,
+    "humidity": 43,
+    "gpsCoordinates": {
+      "latitude": 35,
+      "longitude": 178
+    }
+  },
+  {
+    "temperature": 29,
+    "humidity": 63,
+    "gpsCoordinates": {
+      "latitude": 35,
+      "longitude": 178
+    }
+  },
+  {
+    "temperature": 29,
+    "humidity": 75,
+    "gpsCoordinates": {
+      "latitude": 35,
+      "longitude": 178
+    }
+  },
+  {
+    "temperature": 27,
+    "humidity": 58,
+    "gpsCoordinates": {
+      "latitude": 35,
+      "longitude": 178
+    }
+  },
+  {
+    "temperature": 21,
+    "humidity": 48,
+    "gpsCoordinates": {
+      "latitude": 35,
+      "longitude": 178
+    }
+  },
+  {
+    "temperature": 28,
+    "humidity": 55,
+    "gpsCoordinates": {
+      "latitude": 40.7128,
+      "longitude": -74.006
+    }
+  },
+  {
+    "temperature": 28,
+    "humidity": 55,
+    "gpsCoordinates": {
+      "latitude": 40.7128,
+      "longitude": -74.006
+    }
+  },
+  {
     "temperature": 31,
     "humidity": 58,
     "gpsCoordinates": {
