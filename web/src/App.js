@@ -1,5 +1,7 @@
-import './App.css';
 import React, { useState } from 'react';
+
+import './App.css';
+import LoginModal from './components/login'
 
 function App() {
 
@@ -25,6 +27,9 @@ function App() {
         <td>Bearer: {bearerText}</td>
         </tr></table>
         )}
+
+        <br />
+        <LoginModal />
 
         </div>
     );

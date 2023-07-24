@@ -1,0 +1,75 @@
+/* login.css */
+.login-modal {
+  /* Position the modal at the center of the browser window */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Styling for the modal box */
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Set a fixed width for the modal */
+  width: 300px;
+}
+
+/* Styles for the input fields and button inside the login modal */
+.login-modal input[type="text"],
+.login-modal input[type="password"],
+.login-modal button {
+  /* Make the input fields and button expand to fill the container's width */
+  display: block;
+  width: 75%;
+  /* Add some padding inside the input fields and button */
+  padding: 10px;
+  /* Center the elements horizontally using margin */
+  margin: 10px auto;
+  /* Add a small margin between each input field and button */
+  margin-bottom: 10px;
+  /* Add a light gray border to the input fields and button */
+  border: 1px solid #ccc;
+  /* Round the corners of the input fields and button */
+  border-radius: 5px;
+}
+
+.login-modal button {
+  background-color: #1da1f2;
+  color: white;
+  /* Show a pointer cursor when hovering over the button */
+  cursor: pointer;
+}
+
+.login-modal button:hover {
+  /* Slightly darker blue color on hover */
+  background-color: #1991da;
+}
+
+/* Styles for the "Forgot password?" link */
+.login-modal a {
+  /* Display the link as a block-level element to center it */
+  display: block;
+  /* Center the link's text */
+  text-align: center;
+  color: #1da1f2;
+  /* Remove underline from the link text */
+  text-decoration: none;
+  /* Use 'Arial' font, fallback to sans-serif if Arial is not available */
+  font-family: 'Arial', sans-serif;
+  font-size: 14px;
+}
+
+/* Styles for the "Forgot password?" link on hover */
+.login-modal a:hover {
+  /* Add underline on hover */
+  text-decoration: underline;
+}
+
+/* Styles for the success message displayed after successful login */
+.login-modal p {
+  text-align: center;
+  /* Add some margin on top of the message */
+  margin-top: 10px;
+  color: #1da1f2;
+}
+
