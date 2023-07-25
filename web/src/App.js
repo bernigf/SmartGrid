@@ -17,9 +17,11 @@ function App() {
 
     return (
         <div>
+		{ /*
         API UserID: <input type="text" value={userText} onChange={handleUserChange} />
         API Auth Bearer: <input type="text" value={bearerText} onChange={handleBearerChange} />
         <button onClick={handleShowTable}>Show Table</button>
+		*/ }
 
         {showTable && (
         <table border='1px'><tr>

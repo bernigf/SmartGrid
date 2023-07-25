@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './login.css';
 
 const LoginModal = () => {
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -12,6 +13,17 @@ const LoginModal = () => {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const handleKeyPress = (e) => {
+
+	  // Check if the "Enter" key is pressed
+
+	  if(e.key === "Enter") {
+
+		  handleLogin();
+
+	  }
   };
 
   const handleLogin = () => {
@@ -38,9 +50,23 @@ const LoginModal = () => {
 
   return (
     <div className="login-modal">
+
       {/* Your CSS styles for the login modal (Twitter-like) */}
-      <input type="text" placeholder="User e-mail" value={username} onChange={handleUsernameChange} />
-      <input type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+
+      <input type="text"
+	  placeholder="User e-mail"
+	  value={username}
+	  onChange={handleUsernameChange}
+	  onKeyPress={handleKeyPress}
+	  />
+
+      <input type="password"
+	  placeholder="Password"
+	  value={password}
+	  onChange={handlePasswordChange}
+	  onKeyPress={handleKeyPress}
+	  />
+
       <button onClick={handleLogin}>Log in</button>
       <a href="URL_TO_FORGOT_PASSWORD_PAGE">Forgot password?</a>
       {message && <p>{message}</p>}

@@ -1,0 +1,13 @@
+/* styles.css */
+
+body {
+
+  /* Set the dark gray background color */
+  /* background-color: DarkGray; */
+  /* background-color: DimGray; */
+  /* background-color: SlateGray; */
+  background-color: #3B3B3B;
+
+  margin: 0; /* Reset margin to remove default spacing around the body */
+  padding: 0; /* Reset padding to remove default padding around the body */
+}
